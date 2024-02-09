@@ -1,16 +1,15 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import React, { useEffect, useState } from "react";
 import {
   View,
-  Text,
   ActivityIndicator,
   TouchableOpacity,
   Dimensions,
 } from "react-native";
-import React, { useEffect, useState } from "react";
-import { useNavigation, useRoute } from "@react-navigation/native";
-import { WebView } from "react-native-webview";
 import { ChevronLeftIcon, ShareIcon } from "react-native-heroicons/outline";
 import { BookmarkSquareIcon } from "react-native-heroicons/solid";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { WebView } from "react-native-webview";
 
 const { height, width } = Dimensions.get("window");
 
@@ -26,12 +25,12 @@ export default function NewsDetails() {
     try {
       // Check if News Article is already in Storage
       const savedArticles = await AsyncStorage.getItem("savedArticles");
-      let savedArticlesArray = savedArticles ? JSON.parse(savedArticles) : [];
+      const savedArticlesArray = savedArticles ? JSON.parse(savedArticles) : [];
       // console.log("Check if the article is already bookmarked");
 
       // Check if the article is already in the bookmarked list
       const isArticleBookmarked = savedArticlesArray.some(
-        (savedArticle) => savedArticle.url === item.url
+        (savedArticle) => savedArticle.url === item.url,
       );
 
       // console.log("Check if the article is already in the bookmarked list");
@@ -41,18 +40,18 @@ export default function NewsDetails() {
         savedArticlesArray.push(item);
         await AsyncStorage.setItem(
           "savedArticles",
-          JSON.stringify(savedArticlesArray)
+          JSON.stringify(savedArticlesArray),
         );
         toggleBookmark(true);
         // console.log("Article is bookmarked");
       } else {
         // If the article is already bookmarked, remove it from the list
         const updatedSavedArticlesArray = savedArticlesArray.filter(
-          (savedArticle) => savedArticle.url !== item.url
+          (savedArticle) => savedArticle.url !== item.url,
         );
         await AsyncStorage.setItem(
           "savedArticles",
-          JSON.stringify(updatedSavedArticlesArray)
+          JSON.stringify(updatedSavedArticlesArray),
         );
         toggleBookmark(false);
         // console.log("Article is removed from bookmarks");
@@ -73,7 +72,7 @@ export default function NewsDetails() {
 
         // Check if the article is already in the bookmarked list
         const isArticleBookmarked = savedArticlesArray.some(
-          (savedArticle) => savedArticle.url === item.url
+          (savedArticle) => savedArticle.url === item.url,
         );
 
         toggleBookmark(isArticleBookmarked);
@@ -120,8 +119,8 @@ export default function NewsDetails() {
 
       {visible && (
         <ActivityIndicator
-          size={"large"}
-          color={"green"}
+          size="large"
+          color="green"
           style={{
             position: "absolute",
             top: height / 2,

@@ -1,5 +1,6 @@
-import { newsApiKey } from "./ApiKey";
 import axios from "axios";
+
+import { newsApiKey } from "./ApiKey";
 
 // Endpoints
 const apiBaseUrl = "https://newsapi.org/v2"; // News API base URL

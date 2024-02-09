@@ -1,10 +1,11 @@
-import { View, Text, Dimensions } from "react-native";
-import React from "react";
 import { useNavigation } from "@react-navigation/native";
+import React from "react";
+import { View, Dimensions } from "react-native";
 import Carousal from "react-native-snap-carousel";
+
 import BreakingNewsCard from "./BreakingNewsCard";
 
-var { width } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 
 export default function BreakingNews({ data, label }) {
   const navigation = useNavigation();

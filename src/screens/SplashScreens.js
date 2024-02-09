@@ -1,11 +1,10 @@
-import { View, Text, ImageBackground } from "react-native";
-import React, { useEffect } from "react";
-import Animated, { FadeInDown } from "react-native-reanimated";
-import { useFonts } from "expo-font";
-import { useCallback } from "react";
-import * as SplashScreen from "expo-splash-screen";
 import { useNavigation } from "@react-navigation/native";
+import { useFonts } from "expo-font";
 import { LinearGradient } from "expo-linear-gradient";
+import * as SplashScreen from "expo-splash-screen";
+import React, { useEffect, useCallback } from "react";
+import { View, Text } from "react-native";
+import { FadeInDown } from "react-native-reanimated";
 
 export default function SplashScreens() {
   const navigation = useNavigation();

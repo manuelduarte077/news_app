@@ -1,3 +1,8 @@
+import { useNavigation } from "@react-navigation/native";
+import { useQuery } from "@tanstack/react-query";
+import { StatusBar } from "expo-status-bar";
+import { useColorScheme } from "nativewind";
+import React, { useEffect, useState, useReducer } from "react";
 import {
   View,
   Text,
@@ -5,19 +10,15 @@ import {
   TouchableOpacity,
   TextInput,
 } from "react-native";
-import React, { useEffect, useState, useReducer } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { useColorScheme } from "nativewind";
-import { StatusBar } from "expo-status-bar";
-import Loading from "../components/Loading/Loading";
-import { useQuery } from "@tanstack/react-query";
-import { categories } from "../constants";
-import CategoriesCard from "../components/CategoriesCard";
-import NewsSection from "../components/NewsSection/NewsSection";
 import { MagnifyingGlassIcon } from "react-native-heroicons/outline";
-import { fetchDiscoverNews } from "../../utils/NewsApi";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
-import { useNavigation } from "@react-navigation/native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+import { fetchDiscoverNews } from "../../utils/NewsApi";
+import CategoriesCard from "../components/CategoriesCard";
+import Loading from "../components/Loading/Loading";
+import NewsSection from "../components/NewsSection/NewsSection";
+import { categories } from "../constants";
 
 export default function DiscoverScreen() {
   const { colorScheme, toggleColorScheme } = useColorScheme();
@@ -36,7 +37,7 @@ export default function DiscoverScreen() {
     setActiveCategory(category);
 
     const filteredArticles = discoverNew?.articles.filter(
-      (article) => article.title !== "[Removed]"
+      (article) => article.title !== "[Removed]",
     );
 
     setWithoutRemoved(filteredArticles || []);
@@ -76,7 +77,7 @@ export default function DiscoverScreen() {
           <TextInput
             onPressIn={() => navigation.navigate("Search")}
             placeholder="Search for news"
-            placeholderTextColor={"gray"}
+            placeholderTextColor="gray"
             className="pl-4 flex-1 font-medium text-black tracking-wider"
           />
         </View>

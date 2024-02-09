@@ -1,12 +1,12 @@
-import { View, Text, TouchableOpacity, Image, FlatList } from "react-native";
-import React, { useCallback, useEffect, useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { heightPercentageToDP as hp } from "react-native-responsive-screen";
-import { BookmarkSquareIcon } from "react-native-heroicons/solid";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { useColorScheme } from "nativewind";
+import React, { useCallback, useEffect, useState } from "react";
+import { View, Text, TouchableOpacity, Image, FlatList } from "react-native";
+import { BookmarkSquareIcon } from "react-native-heroicons/solid";
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function SavedScreen() {
   const { colorScheme, toggleColorScheme } = useColorScheme();
@@ -40,11 +40,11 @@ export default function SavedScreen() {
   const toggleBookmarkAndSave = async (item, index) => {
     try {
       const savedArticles = await AsyncStorage.getItem("savedArticles");
-      let savedArticlesArray = savedArticles ? JSON.parse(savedArticles) : [];
+      const savedArticlesArray = savedArticles ? JSON.parse(savedArticles) : [];
 
       // Check if the article is already in the bookmarked list
       const isArticleBookmarked = savedArticlesArray.some(
-        (savedArticle) => savedArticle.url === item.url
+        (savedArticle) => savedArticle.url === item.url,
       );
 
       if (!isArticleBookmarked) {
@@ -52,7 +52,7 @@ export default function SavedScreen() {
         savedArticlesArray.push(item);
         await AsyncStorage.setItem(
           "savedArticles",
-          JSON.stringify(savedArticlesArray)
+          JSON.stringify(savedArticlesArray),
         );
         const updatedStatus = [...bookmarkStatus];
         updatedStatus[index] = true;
@@ -61,11 +61,11 @@ export default function SavedScreen() {
       } else {
         // If the article is already bookmarked, remove it from the list
         const updatedSavedArticlesArray = savedArticlesArray.filter(
-          (savedArticle) => savedArticle.url !== item.url
+          (savedArticle) => savedArticle.url !== item.url,
         );
         await AsyncStorage.setItem(
           "savedArticles",
-          JSON.stringify(updatedSavedArticlesArray)
+          JSON.stringify(updatedSavedArticlesArray),
         );
         const updatedStatus = [...bookmarkStatus];
         updatedStatus[index] = false;
@@ -101,7 +101,7 @@ export default function SavedScreen() {
 
       loadSavedArticles();
       // console.log("Pull saved articles from AsyncStorage");
-    }, [navigation, urlList]) // Include 'navigation' in the dependencies array if needed
+    }, [navigation, urlList]), // Include 'navigation' in the dependencies array if needed
   );
 
   const clearSavedArticles = async () => {
@@ -179,7 +179,7 @@ export default function SavedScreen() {
   return (
     <SafeAreaView className="p-4 bg-white flex-1 dark:bg-neutral-900">
       <StatusBar style={colorScheme == "dark" ? "light" : "dark"} />
-      
+
       {/* Header  */}
       <View className="flex-row justify-between items-center">
         <Text
