@@ -2,9 +2,7 @@ import { newsApiKey } from "./ApiKey";
 import axios from "axios";
 
 // Endpoints
-
-const apiBaseUrl = "https://newsapi.org/v2";
-
+const apiBaseUrl = "https://newsapi.org/v2"; // News API base URL
 const breakingNewsUrl = `${apiBaseUrl}/top-headlines?country=us&apiKey=${newsApiKey}`;
 const recommendedNewsUrl = `${apiBaseUrl}/top-headlines?country=us&category=business&apiKey=${newsApiKey}`;
 
@@ -26,7 +24,10 @@ const newsApiCall = async (endpoints, params) => {
     return response.data;
   } catch (error) {
     console.log(error);
-    return {};
+    return {
+      status: "error",
+      message: "Failed to fetch news",
+    };
   }
 };
 

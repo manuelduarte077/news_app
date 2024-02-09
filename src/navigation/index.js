@@ -8,10 +8,10 @@ import NewsDetails from "../screens/NewsDetails";
 import WelcomeScreen from "../screens/WelcomeScreen";
 import DiscoverScreen from "../screens/DiscoverScreen";
 import SavedScreen from "../screens/SavedScreen";
-import ProfileScreen from "../screens/ProfileScreen";
 import SplashScreens from "../screens/SplashScreens";
 import { Ionicons } from "@expo/vector-icons";
 import SearchScreen from "../screens/SearchScreen";
+
 import { useColorScheme } from "nativewind";
 
 const android = Platform.OS === "android";
@@ -55,13 +55,9 @@ export default function AppNavigation() {
           tabBarLabelStyle: {
             fontSize: 12,
             fontFamily: "SpaceGroteskMedium",
-            // paddingBottom: 10,
           },
           tabBarStyle: {
             backgroundColor: colorScheme == "dark" ? "black" : "white",
-            // borderTopWidth: 0,
-            // padding: 10,
-            // height: 60,
           },
         })}
       >
