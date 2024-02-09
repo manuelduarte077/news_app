@@ -13,6 +13,12 @@
     "production": {}
   },
   "submit": {
-    "production": {}
+    "production": {
+      "ios": {
+        "appleId": "carlosd99m@gmail.com",
+        "appName": "6477725688",
+        "appleTeamId": "2XUFV8QBCV"
+      }
+    }
   }
 }
