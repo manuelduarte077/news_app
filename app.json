@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "newsapp",
-    "slug": "newsapp",
+    "name": "NovaFeed",
+    "slug": "novafeed",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -10,6 +10,9 @@
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
       "**/*"

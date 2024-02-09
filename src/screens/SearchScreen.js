@@ -1,3 +1,6 @@
+import { useNavigation } from "@react-navigation/native";
+import { debounce } from "lodash";
+import React, { useCallback, useState } from "react";
 import {
   View,
   Text,
@@ -5,13 +8,11 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import React, { useCallback, useState } from "react";
-import { useNavigation } from "@react-navigation/native";
 import { XMarkIcon } from "react-native-heroicons/outline";
-import { fetchSearchNews } from "../../utils/NewsApi";
-import { debounce } from "lodash";
-import NewsSection from "../components/NewsSection/NewsSection";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+
+import { fetchSearchNews } from "../../utils/NewsApi";
+import NewsSection from "../components/NewsSection/NewsSection";
 
 export default function SearchScreen() {
   const navigation = useNavigation();
@@ -51,7 +52,7 @@ export default function SearchScreen() {
         <TextInput
           onChangeText={handleTextDebounce}
           placeholder="Search for your news"
-          placeholderTextColor={"gray"}
+          placeholderTextColor="gray"
           className=" font-medium text-black tracking-wider p-3 py-1 w-[90%] "
         />
         <TouchableOpacity onPress={() => navigation.navigate("Home")}>

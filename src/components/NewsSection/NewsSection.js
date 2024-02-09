@@ -37,11 +37,11 @@ export default function NewsSection({ newsProps }) {
   const toggleBookmarkAndSave = async (item, index) => {
     try {
       const savedArticles = await AsyncStorage.getItem("savedArticles");
-      let savedArticlesArray = savedArticles ? JSON.parse(savedArticles) : [];
+      const savedArticlesArray = savedArticles ? JSON.parse(savedArticles) : [];
 
       // Check if the article is already in the bookmarked list
       const isArticleBookmarked = savedArticlesArray.some(
-        (savedArticle) => savedArticle.url === item.url
+        (savedArticle) => savedArticle.url === item.url,
       );
 
       if (!isArticleBookmarked) {
@@ -49,7 +49,7 @@ export default function NewsSection({ newsProps }) {
         savedArticlesArray.push(item);
         await AsyncStorage.setItem(
           "savedArticles",
-          JSON.stringify(savedArticlesArray)
+          JSON.stringify(savedArticlesArray),
         );
         const updatedStatus = [...bookmarkStatus];
         updatedStatus[index] = true;
@@ -57,11 +57,11 @@ export default function NewsSection({ newsProps }) {
       } else {
         // If the article is already bookmarked, remove it from the list
         const updatedSavedArticlesArray = savedArticlesArray.filter(
-          (savedArticle) => savedArticle.url !== item.url
+          (savedArticle) => savedArticle.url !== item.url,
         );
         await AsyncStorage.setItem(
           "savedArticles",
-          JSON.stringify(updatedSavedArticlesArray)
+          JSON.stringify(updatedSavedArticlesArray),
         );
         const updatedStatus = [...bookmarkStatus];
         updatedStatus[index] = false;
@@ -84,7 +84,7 @@ export default function NewsSection({ newsProps }) {
 
           // Check if each URL in 'urlList' exists in the bookmarked list
           const isArticleBookmarkedList = urlList.map((url) =>
-            savedArticlesArray.some((savedArticle) => savedArticle.url === url)
+            savedArticlesArray.some((savedArticle) => savedArticle.url === url),
           );
 
           // Set the bookmark status for all items based on the loaded data
@@ -95,7 +95,7 @@ export default function NewsSection({ newsProps }) {
       };
 
       loadSavedArticles();
-    }, [navigation, urlList]) // Include 'navigation' in the dependencies array if needed
+    }, [navigation, urlList]), // Include 'navigation' in the dependencies array if needed
   );
 
   // Component to render each item in the list
@@ -170,7 +170,7 @@ export default function NewsSection({ newsProps }) {
       {/* Header */}
 
       <FlatList
-        nestedScrollEnabled={true}
+        nestedScrollEnabled
         scrollEnabled={false}
         data={newsProps}
         showsVerticalScrollIndicator={false}

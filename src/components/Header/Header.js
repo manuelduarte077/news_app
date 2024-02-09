@@ -1,8 +1,8 @@
-import { Switch, Text, TouchableOpacity, View } from "react-native";
-import React from "react";
-import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import { useNavigation } from "@react-navigation/native";
 import { useColorScheme } from "nativewind";
+import React from "react";
+import { Switch, Text, TouchableOpacity, View } from "react-native";
+import { MagnifyingGlassIcon } from "react-native-heroicons/outline";
 
 export default function Header() {
   const navigation = useNavigation();

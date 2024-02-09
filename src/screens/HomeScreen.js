@@ -1,20 +1,21 @@
-import { View, ScrollView } from "react-native";
-import React, { useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { useColorScheme } from "nativewind";
-import { StatusBar } from "expo-status-bar";
-import Loading from "../components/Loading/Loading";
-import Header from "../components/Header/Header";
-import NewsSection from "../components/NewsSection/NewsSection";
 import { useQuery } from "@tanstack/react-query";
-import { fetchBreakingNews, fetchRecommendedNews } from "../../utils/NewsApi";
-import MiniHeader from "../components/Header/MiniHeader";
+import { StatusBar } from "expo-status-bar";
+import { useColorScheme } from "nativewind";
+import React from "react";
+import { View, ScrollView } from "react-native";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+import { fetchBreakingNews, fetchRecommendedNews } from "../../utils/NewsApi";
 import BreakingNews from "../components/BreakingNews";
+import Header from "../components/Header/Header";
+import MiniHeader from "../components/Header/MiniHeader";
+import Loading from "../components/Loading/Loading";
+import NewsSection from "../components/NewsSection/NewsSection";
 
 export default function HomeScreen() {
   const { colorScheme, toggleColorScheme } = useColorScheme();
-  
+
   // Breaking News
   const { data, isLoading: isBreakingLoading } = useQuery({
     queryKey: ["breakingNewss"],

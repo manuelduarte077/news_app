@@ -1,18 +1,11 @@
-import {
-  View,
-  Text,
-  Touchable,
-  TouchableOpacity,
-  ImageBackground,
-} from "react-native";
-import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { LinearGradient } from "expo-linear-gradient";
+import React from "react";
+import { View, Text, TouchableOpacity } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-
-import { LinearGradient } from "expo-linear-gradient";
 
 export default function Welcome() {
   const navigation = useNavigation();

@@ -1,3 +1,5 @@
+import { LinearGradient } from "expo-linear-gradient";
+import React from "react";
 import {
   Dimensions,
   TouchableWithoutFeedback,
@@ -5,10 +7,8 @@ import {
   Text,
   View,
 } from "react-native";
-import React from "react";
-import { LinearGradient } from "expo-linear-gradient";
 
-var { width, height } = Dimensions.get("window");
+const { width, height } = Dimensions.get("window");
 
 export default function BreakingNewsCard({ item, handleClick }) {
   return (

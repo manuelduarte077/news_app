@@ -1,20 +1,17 @@
-import { Platform } from "react-native";
-import React from "react";
+import { Ionicons } from "@expo/vector-icons";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { useColorScheme } from "nativewind";
+import React from "react";
+
+import DiscoverScreen from "../screens/DiscoverScreen";
 import HomeScreen from "../screens/HomeScreen";
 import NewsDetails from "../screens/NewsDetails";
-import WelcomeScreen from "../screens/WelcomeScreen";
-import DiscoverScreen from "../screens/DiscoverScreen";
 import SavedScreen from "../screens/SavedScreen";
-import SplashScreens from "../screens/SplashScreens";
-import { Ionicons } from "@expo/vector-icons";
 import SearchScreen from "../screens/SearchScreen";
-
-import { useColorScheme } from "nativewind";
-
-const android = Platform.OS === "android";
+import SplashScreens from "../screens/SplashScreens";
+import WelcomeScreen from "../screens/WelcomeScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
