@@ -37,7 +37,7 @@ export default function Welcome() {
         <Text
           className="font-bold text-4xl shadow-2xl text-white text-center tracking-wider"
           style={{
-            fontSize: wp(10),
+            fontSize: wp(8),
             fontFamily: "SpaceGroteskBold",
           }}
         >
@@ -58,7 +58,9 @@ export default function Welcome() {
         className="bg-white rounded-full p-4 justify-center items-center w-[90%] mt-8"
         onPress={() => navigation.navigate("HomeTabs")}
       >
-        <Text className="text-base text-green-900">Getting Started</Text>
+        <Text className="text-base text-green-900 font-medium ">
+          Getting Started
+        </Text>
       </TouchableOpacity>
     </View>
   );
