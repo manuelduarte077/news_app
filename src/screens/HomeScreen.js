@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { StatusBar } from "expo-status-bar";
 import { useColorScheme } from "nativewind";
 import React from "react";
-import { View, ScrollView } from "react-native";
+import { View, ScrollView, Text } from "react-native";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -30,7 +30,7 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView className=" flex-1 bg-white dark:bg-neutral-900">
-      <StatusBar style={colorScheme == "dark" ? "light" : "dark"} />
+      <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
 
       <View>
         {/* Header */}
