@@ -1,5 +1,4 @@
 import { useNavigation } from "@react-navigation/native";
-import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { widthPercentageToDP as wp } from "react-native-responsive-screen";
@@ -8,10 +7,7 @@ export default function Welcome() {
   const navigation = useNavigation();
 
   return (
-    <View
-      source={require("../../assets/images/welcome/reporter.jpg")}
-      className="flex-1 justify-center items-center pb-6 bg-[#180E19]"
-    >
+    <View className="flex-1 justify-center items-center pb-6 bg-[#180E19]">
       <View className="flex-1 items-center justify-end max-w-[85%]  space-y-4 ">
         <Text
           className="font-bold text-4xl shadow-2xl text-white text-center tracking-wider"

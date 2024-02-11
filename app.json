@@ -19,12 +19,13 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.manuelduarte077.novafeed"
+      "bundleIdentifier": "com.manuelduarte077.novafeed",
+      "buildNumber": "2"
     },
     "android": {
+      "versionCode": 1,
       "adaptiveIcon": {
         "monochromeImage": "./assets/icon.png",
-        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.manuelduarte077.novafeed"

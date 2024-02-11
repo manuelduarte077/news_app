@@ -10,7 +10,6 @@ import HomeScreen from "../screens/HomeScreen";
 import NewsDetails from "../screens/NewsDetails";
 import SavedScreen from "../screens/SavedScreen";
 import SearchScreen from "../screens/SearchScreen";
-import SplashScreens from "../screens/SplashScreens";
 import WelcomeScreen from "../screens/WelcomeScreen";
 
 const Tab = createBottomTabNavigator();
@@ -75,7 +74,6 @@ export default function AppNavigation() {
           headerShown: false,
         }}
       >
-        <Stack.Screen name="SplashS" component={SplashScreens} />
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="Search" component={SearchScreen} />
         <Stack.Screen
