@@ -35,6 +35,9 @@ dependencies:
   expo-linear-gradient:
     specifier: ~12.7.1
     version: 12.7.1(expo@50.0.6)
+  expo-sharing:
+    specifier: ~11.10.0
+    version: 11.10.0(expo@50.0.6)
   expo-splash-screen:
     specifier: ~0.26.4
     version: 0.26.4(expo-modules-autolinking@1.10.3)(expo@50.0.6)
@@ -4779,6 +4782,14 @@ packages:
     resolution: {integrity: sha512-rlctE3nCNLCGv3LosGQNaTuwGrr2SyQA+hOgci/0l+VRc0gFNtvl0gskph9C0tnN1jzBeb8rRZQYVj5ih1yxcA==}
     dependencies:
       invariant: 2.2.4
+    dev: false
+
+  /expo-sharing@11.10.0(expo@50.0.6):
+    resolution: {integrity: sha512-/64RyyKlZ25WfnMXa87HbPXhIIqWwNbIku/RaIYAq4SE0XTRC+KTH3v0XFkfDa+SCG/jKsAr1pJ3vQvsNo1sCQ==}
+    peerDependencies:
+      expo: '*'
+    dependencies:
+      expo: 50.0.6(@babel/core@7.23.9)(@react-native/babel-preset@0.73.21)
     dev: false
 
   /expo-splash-screen@0.26.4(expo-modules-autolinking@1.10.3)(expo@50.0.6):

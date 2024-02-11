@@ -1,12 +1,15 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import { platformColor } from "nativewind";
 import React, { useEffect, useState } from "react";
 import {
   View,
   ActivityIndicator,
   TouchableOpacity,
   Dimensions,
+  Share,
+  Alert,
 } from "react-native";
 import { WebView } from "react-native-webview";
 
@@ -58,7 +61,15 @@ export default function NewsDetails() {
 
   // Sahre the news article
   const shareArticle = async () => {
-    console.log("Share Article");
+    try {
+      await Share.share({
+        message: `Checkout this news article: ${item.title} \n${item.url}`,
+        title: item.title,
+        url: item.url,
+      });
+    } catch (error) {
+      Alert.alert(error.message);
+    }
   };
 
   useEffect(() => {
