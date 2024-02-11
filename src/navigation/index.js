@@ -18,6 +18,7 @@ const Stack = createNativeStackNavigator();
 
 export default function AppNavigation() {
   const { colorScheme, toggleColorScheme } = useColorScheme();
+
   const TabNavigator = () => {
     return (
       <Tab.Navigator
@@ -69,7 +70,7 @@ export default function AppNavigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="SplashS"
+        initialRouteName="Welcome"
         screenOptions={{
           headerShown: false,
         }}

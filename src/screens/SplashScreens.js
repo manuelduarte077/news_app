@@ -56,7 +56,7 @@ export default function SplashScreens() {
         entering={FadeInDown.delay(200).duration(700).springify().damping(12)}
       >
         <Text className="text-white text-3xl font-extrabold uppercase">
-          Stacks news
+          News App
         </Text>
       </View>
     </View>
