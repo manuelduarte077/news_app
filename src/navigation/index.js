@@ -54,7 +54,7 @@ export default function AppNavigation() {
             fontFamily: "SpaceGroteskMedium",
           },
           tabBarStyle: {
-            backgroundColor: colorScheme == "dark" ? "black" : "white",
+            backgroundColor: colorScheme === "dark" ? "black" : "white",
           },
         })}
       >

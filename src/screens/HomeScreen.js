@@ -40,7 +40,7 @@ export default function HomeScreen() {
         {isBreakingLoading ? (
           <Loading />
         ) : (
-          <View className="">
+          <View>
             <MiniHeader label="Breaking News" />
             <BreakingNews label="Breaking News" data={data.articles} />
           </View>

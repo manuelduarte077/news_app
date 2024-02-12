@@ -1,10 +1,8 @@
-import { useNavigation } from "@react-navigation/native";
 import { useColorScheme } from "nativewind";
 import React from "react";
-import { Switch, Text, View, Image, TouchableOpacity } from "react-native";
+import { Switch, Text, View, Image } from "react-native";
 
 export default function Header() {
-  const navigation = useNavigation();
   const { colorScheme, toggleColorScheme } = useColorScheme();
 
   return (
