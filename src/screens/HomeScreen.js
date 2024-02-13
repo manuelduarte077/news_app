@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { StatusBar } from "expo-status-bar";
 import { useColorScheme } from "nativewind";
 import React from "react";
-import { View, ScrollView, Text } from "react-native";
+import { View, ScrollView } from "react-native";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { SafeAreaView } from "react-native-safe-area-context";
 

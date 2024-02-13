@@ -138,12 +138,7 @@ export default function SavedScreen() {
 
           {/* Content */}
 
-          <View className="w-[70%] pl-4 justify-center space-y-1">
-            {/* Author */}
-            <Text className="text-xs font-bold text-gray-900 dark:text-neutral-300">
-              {item.author}
-            </Text>
-
+          <View className="w-[80%] pl-4 justify-center space-y-1">
             {/* Title */}
             <Text
               className="text-neutral-800 capitalize max-w-[90%] dark:text-white "
@@ -157,20 +152,34 @@ export default function SavedScreen() {
                 : item.title}
             </Text>
 
-            {/* Date */}
-            <Text className="text-xs text-gray-700 dark:text-neutral-300">
-              {formatDate(item.publishedAt)}
+            {/* Author */}
+            <Text className="text-xs font-bold text-gray-900 dark:text-neutral-300">
+              {item.author}
             </Text>
+
+            {/* Date */}
+            <View className="flex-row items-center  justify-between">
+              <Text className="text-xs text-[#909090] dark:text-neutral-300">
+                {item.source.name}
+              </Text>
+              <TouchableOpacity>
+                <Ionicons
+                  name="ellipsis-horizontal-sharp"
+                  size={24}
+                  color={colorScheme === "dark" ? "white" : "black"}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
 
           {/* Save */}
-          <View className="w-[10%] justify-center">
+          {/* <View className="w-[10%] justify-center">
             <TouchableOpacity
               onPress={() => toggleBookmarkAndSave(item, index)}
             >
-              <Ionicons name="bookmark-outline" size={24} color="black" />
+              <Ionicons name="bookmark-outline" size={24} color="white" />
             </TouchableOpacity>
-          </View>
+          </View> */}
         </View>
       </TouchableOpacity>
     );
@@ -178,19 +187,19 @@ export default function SavedScreen() {
 
   return (
     <SafeAreaView className="p-4 bg-white flex-1 dark:bg-neutral-900">
-      <StatusBar style={colorScheme == "dark" ? "light" : "dark"} />
+      <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
 
       {/* Header  */}
       <View className="flex-row justify-between items-center">
         <Text
-          className="font-bold text-xl text-green-800 dark:text-white"
+          className="font-bold text-xl text-black-800 dark:text-white"
           style={{
             fontFamily: "SpaceGroteskBold",
           }}
         >
           Saved Articles
         </Text>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={clearSavedArticles}
           className="bg-green-800 py-1 px-4 rounded-lg"
         >
@@ -202,7 +211,7 @@ export default function SavedScreen() {
           >
             Clear
           </Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
 
       <View style={{ marginVertical: hp(2) }} className="space-y-2 ">

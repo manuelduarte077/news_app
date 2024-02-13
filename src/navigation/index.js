@@ -42,12 +42,23 @@ export default function AppNavigation() {
               <Ionicons
                 name={iconName}
                 size={customizeSize}
-                color={focused ? "green" : "gray"}
+                color={
+                  focused
+                    ? {
+                        light: "black",
+                        dark: "white",
+                      }[colorScheme]
+                    : "gray"
+                }
               />
             );
           },
 
-          tabBarActiveTintColor: "green",
+          tabBarActiveTintColor: {
+            light: "black",
+            dark: "white",
+          }[colorScheme],
+
           tabBarInactiveTintColor: "gray",
           tabBarLabelStyle: {
             fontSize: 12,

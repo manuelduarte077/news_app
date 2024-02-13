@@ -7,7 +7,6 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
-  Platform,
 } from "react-native";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { Ionicons } from "react-native-vector-icons";

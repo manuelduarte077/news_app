@@ -126,7 +126,7 @@ export default function NewsDetails() {
       {visible && (
         <ActivityIndicator
           size="large"
-          color="green"
+          color="black"
           style={{
             position: "absolute",
             top: height / 2,
