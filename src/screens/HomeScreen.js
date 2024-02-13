@@ -30,7 +30,7 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView className=" flex-1 bg-white dark:bg-neutral-900">
-      <StatusBar style={colorScheme == "dark" ? "light" : "dark"} />
+      <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
 
       <View>
         {/* Header */}
@@ -40,7 +40,7 @@ export default function HomeScreen() {
         {isBreakingLoading ? (
           <Loading />
         ) : (
-          <View className="">
+          <View>
             <MiniHeader label="Breaking News" />
             <BreakingNews label="Breaking News" data={data.articles} />
           </View>

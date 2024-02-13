@@ -18,12 +18,12 @@ export default function CategoriesCard({
         }}
       >
         {categories.map((category, index) => {
-          const isActive = category.title == activeCategory;
+          const isActive = category.title === activeCategory;
           const activeButtonClass = isActive
-            ? "bg-green-700 "
+            ? "bg-black"
             : "bg-black/10 dark:bg-neutral-400 ";
           const activeTextClass = isActive
-            ? "text-white "
+            ? "text-white"
             : "text-gray-600 dark:text-neutral-600 ";
 
           return (

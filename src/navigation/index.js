@@ -10,7 +10,6 @@ import HomeScreen from "../screens/HomeScreen";
 import NewsDetails from "../screens/NewsDetails";
 import SavedScreen from "../screens/SavedScreen";
 import SearchScreen from "../screens/SearchScreen";
-import SplashScreens from "../screens/SplashScreens";
 import WelcomeScreen from "../screens/WelcomeScreen";
 
 const Tab = createBottomTabNavigator();
@@ -18,6 +17,7 @@ const Stack = createNativeStackNavigator();
 
 export default function AppNavigation() {
   const { colorScheme, toggleColorScheme } = useColorScheme();
+
   const TabNavigator = () => {
     return (
       <Tab.Navigator
@@ -42,19 +42,30 @@ export default function AppNavigation() {
               <Ionicons
                 name={iconName}
                 size={customizeSize}
-                color={focused ? "green" : "gray"}
+                color={
+                  focused
+                    ? {
+                        light: "black",
+                        dark: "white",
+                      }[colorScheme]
+                    : "gray"
+                }
               />
             );
           },
 
-          tabBarActiveTintColor: "green",
+          tabBarActiveTintColor: {
+            light: "black",
+            dark: "white",
+          }[colorScheme],
+
           tabBarInactiveTintColor: "gray",
           tabBarLabelStyle: {
             fontSize: 12,
             fontFamily: "SpaceGroteskMedium",
           },
           tabBarStyle: {
-            backgroundColor: colorScheme == "dark" ? "black" : "white",
+            backgroundColor: colorScheme === "dark" ? "black" : "white",
           },
         })}
       >
@@ -69,12 +80,11 @@ export default function AppNavigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="SplashS"
+        initialRouteName="Welcome"
         screenOptions={{
           headerShown: false,
         }}
       >
-        <Stack.Screen name="SplashS" component={SplashScreens} />
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="Search" component={SearchScreen} />
         <Stack.Screen

@@ -1,26 +1,21 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useFocusEffect, useNavigation } from "@react-navigation/native";
-import React, { useCallback, useEffect, useState } from "react";
-import { View, Text, TouchableOpacity, Image, FlatList } from "react-native";
-import { BookmarkSquareIcon } from "react-native-heroicons/solid";
+import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import { useColorScheme } from "nativewind";
+import React, { useEffect, useState } from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  FlatList,
+  Alert,
+} from "react-native";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 
 export default function NewsSection({ newsProps }) {
+  const { colorScheme } = useColorScheme();
   const navigation = useNavigation();
   const [urlList, setUrlList] = useState([]);
-  const [bookmarkStatus, setBookmarkStatus] = useState([]);
-
-  // Function to format the date
-  function formatDate(isoDate) {
-    const options = {
-      weekday: "short",
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-    };
-    const date = new Date(isoDate);
-    return date.toLocaleDateString(undefined, options);
-  }
 
   // Hook to set the URL list
   useEffect(() => {
@@ -33,70 +28,18 @@ export default function NewsSection({ newsProps }) {
     navigation.navigate("NewsDetails", item);
   };
 
-  // Function to toggle bookmark and save article
-  const toggleBookmarkAndSave = async (item, index) => {
-    try {
-      const savedArticles = await AsyncStorage.getItem("savedArticles");
-      const savedArticlesArray = savedArticles ? JSON.parse(savedArticles) : [];
-
-      // Check if the article is already in the bookmarked list
-      const isArticleBookmarked = savedArticlesArray.some(
-        (savedArticle) => savedArticle.url === item.url,
-      );
-
-      if (!isArticleBookmarked) {
-        // If the article is not bookmarked, add it to the bookmarked list
-        savedArticlesArray.push(item);
-        await AsyncStorage.setItem(
-          "savedArticles",
-          JSON.stringify(savedArticlesArray),
-        );
-        const updatedStatus = [...bookmarkStatus];
-        updatedStatus[index] = true;
-        setBookmarkStatus(updatedStatus);
-      } else {
-        // If the article is already bookmarked, remove it from the list
-        const updatedSavedArticlesArray = savedArticlesArray.filter(
-          (savedArticle) => savedArticle.url !== item.url,
-        );
-        await AsyncStorage.setItem(
-          "savedArticles",
-          JSON.stringify(updatedSavedArticlesArray),
-        );
-        const updatedStatus = [...bookmarkStatus];
-        updatedStatus[index] = false;
-        setBookmarkStatus(updatedStatus);
-      }
-    } catch (error) {
-      console.log("Error Saving/Removing Article", error);
-    }
+  // Function to open the modal
+  const openModal = () => {
+    Alert.alert("Options", "Choose an option", [
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel",
+      },
+      { text: "Read Later", onPress: () => console.log("Read Later Pressed") },
+      { text: "Share", onPress: () => console.log("Share Pressed") },
+    ]);
   };
-
-  // Effect to load saved articles from AsyncStorage when the component mounts
-  useFocusEffect(
-    useCallback(() => {
-      const loadSavedArticles = async () => {
-        try {
-          const savedArticles = await AsyncStorage.getItem("savedArticles");
-          const savedArticlesArray = savedArticles
-            ? JSON.parse(savedArticles)
-            : [];
-
-          // Check if each URL in 'urlList' exists in the bookmarked list
-          const isArticleBookmarkedList = urlList.map((url) =>
-            savedArticlesArray.some((savedArticle) => savedArticle.url === url),
-          );
-
-          // Set the bookmark status for all items based on the loaded data
-          setBookmarkStatus(isArticleBookmarkedList);
-        } catch (error) {
-          console.log("Error Loading Saved Articles", error);
-        }
-      };
-
-      loadSavedArticles();
-    }, [navigation, urlList]), // Include 'navigation' in the dependencies array if needed
-  );
 
   // Component to render each item in the list
   const renderItem = ({ item, index }) => {
@@ -123,17 +66,10 @@ export default function NewsSection({ newsProps }) {
 
           {/* Content */}
 
-          <View className="w-[70%] pl-4 justify-center space-y-1">
-            {/* Author */}
-            <Text className="text-xs font-bold text-gray-900 dark:text-neutral-300">
-              {item?.author?.length > 20
-                ? item.author.slice(0, 20) + "..."
-                : item.author}
-            </Text>
-
+          <View className="w-[80%] pl-4 justify-center space-y-1">
             {/* Title */}
             <Text
-              className="text-neutral-800 capitalize max-w-[90%] dark:text-white "
+              className="text-neutral-800 capitalize dark:text-white "
               style={{
                 fontSize: hp(1.7),
                 fontFamily: "SpaceGroteskBold",
@@ -144,21 +80,27 @@ export default function NewsSection({ newsProps }) {
                 : item.title}
             </Text>
 
-            {/* Date */}
-            <Text className="text-xs text-gray-700 dark:text-neutral-300">
-              {formatDate(item.publishedAt)}
+            {/* Author */}
+            <Text className="text-xs font-medium text-[#909090] dark:text-neutral-300">
+              By{" "}
+              {item?.author?.length > 20
+                ? item.author.slice(0, 20) + "..."
+                : item.author}
             </Text>
-          </View>
 
-          {/* Bookmark */}
-          <View className="w-[10%] justify-center">
-            <TouchableOpacity
-              onPress={() => toggleBookmarkAndSave(item, index)}
-            >
-              <BookmarkSquareIcon
-                color={bookmarkStatus[index] ? "green" : "gray"}
-              />
-            </TouchableOpacity>
+            {/* Date */}
+            <View className="flex-row items-center  justify-between">
+              <Text className="text-xs text-[#909090] dark:text-neutral-300">
+                {item.source.name}
+              </Text>
+              <TouchableOpacity onPress={openModal}>
+                <Ionicons
+                  name="ellipsis-horizontal-sharp"
+                  size={24}
+                  color={colorScheme === "dark" ? "white" : "black"}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </TouchableOpacity>
@@ -180,32 +122,3 @@ export default function NewsSection({ newsProps }) {
     </View>
   );
 }
-
-// useEffect(() => {
-
-//   const loadSavedArticles = async () => {
-//     try {
-//       const savedArticles = await AsyncStorage.getItem("savedArticles");
-//       const savedArticlesArray = savedArticles
-//         ? JSON.parse(savedArticles)
-//         : [];
-
-//       // Check if each URL in 'urlList' exists in the bookmarked list
-//       const isArticleBookmarkedList = urlList.map((url) =>
-//         savedArticlesArray.some((savedArticle) => savedArticle.url === url)
-//       );
-
-//       // Set the bookmark status for all items based on the loaded data
-//       setBookmarkStatus(isArticleBookmarkedList);
-//       console.log("Check if the current article is in bookmarks");
-//     } catch (error) {
-//       console.log("Error Loading Saved Articles", error);
-//     }
-//   };
-
-//   loadSavedArticles();
-// }, [urlList]);
-
-// contentContainerStyle={{
-//         paddingBottom: hp(110),
-//       }}
