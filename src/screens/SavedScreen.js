@@ -4,9 +4,9 @@ import { StatusBar } from "expo-status-bar";
 import { useColorScheme } from "nativewind";
 import React, { useCallback, useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, Image, FlatList } from "react-native";
-import { BookmarkSquareIcon } from "react-native-heroicons/solid";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Ionicons } from "react-native-vector-icons";
 
 export default function SavedScreen() {
   const { colorScheme, toggleColorScheme } = useColorScheme();
@@ -168,7 +168,7 @@ export default function SavedScreen() {
             <TouchableOpacity
               onPress={() => toggleBookmarkAndSave(item, index)}
             >
-              <BookmarkSquareIcon color="green" />
+              <Ionicons name="bookmark-outline" size={24} color="black" />
             </TouchableOpacity>
           </View>
         </View>

@@ -7,9 +7,10 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  Platform,
 } from "react-native";
-import { XMarkIcon } from "react-native-heroicons/outline";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import { Ionicons } from "react-native-vector-icons";
 
 import { fetchSearchNews } from "../../utils/NewsApi";
 import NewsSection from "../components/NewsSection/NewsSection";
@@ -45,7 +46,7 @@ export default function SearchScreen() {
   const handleTextDebounce = useCallback(debounce(handleSearch, 400), []);
 
   return (
-    <View className="flex-1 bg-white dark:bg-neutral-900">
+    <View className="flex-1 bg-white dark:bg-neutral-900 pt-4">
       {/* Search Input */}
 
       <View className="mx-4 mb-3 mt-12 flex-row p-2 justify-between items-center bg-neutral-100 rounded-lg">
@@ -56,7 +57,8 @@ export default function SearchScreen() {
           className=" font-medium text-black tracking-wider p-3 py-1 w-[90%] "
         />
         <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-          <XMarkIcon size="25" color="green" strokeWidth={3} />
+          {/* <XMarkIcon size="25" color="green" strokeWidth={3} /> */}
+          <Ionicons name="close-circle-outline" size={24} color="black" />
         </TouchableOpacity>
       </View>
 
