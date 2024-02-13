@@ -1,10 +1,19 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { useColorScheme } from "nativewind";
 import React, { useEffect, useState } from "react";
-import { View, Text, TouchableOpacity, Image, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  FlatList,
+  Alert,
+} from "react-native";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 
 export default function NewsSection({ newsProps }) {
+  const { colorScheme } = useColorScheme();
   const navigation = useNavigation();
   const [urlList, setUrlList] = useState([]);
 
@@ -17,6 +26,19 @@ export default function NewsSection({ newsProps }) {
   // Function to handle click on an item
   const handleClick = (item) => {
     navigation.navigate("NewsDetails", item);
+  };
+
+  // Function to open the modal
+  const openModal = () => {
+    Alert.alert("Options", "Choose an option", [
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel",
+      },
+      { text: "Read Later", onPress: () => console.log("Read Later Pressed") },
+      { text: "Share", onPress: () => console.log("Share Pressed") },
+    ]);
   };
 
   // Component to render each item in the list
@@ -71,15 +93,11 @@ export default function NewsSection({ newsProps }) {
               <Text className="text-xs text-[#909090] dark:text-neutral-300">
                 {item.source.name}
               </Text>
-              <TouchableOpacity
-                onPress={() => {
-                  console.log("clicked");
-                }}
-              >
+              <TouchableOpacity onPress={openModal}>
                 <Ionicons
                   name="ellipsis-horizontal-sharp"
                   size={24}
-                  color="black"
+                  color={colorScheme === "dark" ? "white" : "black"}
                 />
               </TouchableOpacity>
             </View>

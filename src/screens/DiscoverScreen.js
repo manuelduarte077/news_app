@@ -2,7 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useQuery } from "@tanstack/react-query";
 import { StatusBar } from "expo-status-bar";
 import { useColorScheme } from "nativewind";
-import React, { useEffect, useState, useReducer } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -10,9 +10,9 @@ import {
   TouchableOpacity,
   TextInput,
 } from "react-native";
-import { MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Ionicons } from "react-native-vector-icons";
 
 import { fetchDiscoverNews } from "../../utils/NewsApi";
 import CategoriesCard from "../components/CategoriesCard";
@@ -45,13 +45,13 @@ export default function DiscoverScreen() {
 
   return (
     <SafeAreaView className="pt-8 bg-white dark:bg-neutral-900">
-      <StatusBar style={colorScheme == "dark" ? "light" : "dark"} />
+      <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
 
       <View>
         {/* Header */}
         <View className="px-4 mb-6 justify-between">
           <Text
-            className="text-3xl text-green-800 dark:text-white"
+            className="text-3xl text-black-800 dark:text-white"
             style={{
               fontFamily: "SpaceGroteskBold",
             }}
@@ -72,7 +72,7 @@ export default function DiscoverScreen() {
         {/* Search */}
         <View className="mx-4 mb-8 flex-row p-2 py-3 justify-between items-center bg-neutral-100 rounded-full">
           <TouchableOpacity className="pl-2">
-            <MagnifyingGlassIcon size="25" color="gray" />
+            <Ionicons name="search-outline" size={24} color="black" />
           </TouchableOpacity>
           <TextInput
             onPressIn={() => navigation.navigate("Search")}
@@ -101,15 +101,6 @@ export default function DiscoverScreen() {
               }}
             >
               Discover
-            </Text>
-
-            <Text
-              className="text-base text-green-800 dark:text-neutral-300"
-              style={{
-                fontFamily: "SpaceGroteskBold",
-              }}
-            >
-              View all
             </Text>
           </View>
 
