@@ -6,10 +6,7 @@ import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.dp
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.coding.meet.newsapp.data.database.NewsDatabase
-import dev.donmanuel.meet.newsapp.utils.DB_Name
-import dev.donmanuel.meet.newsapp.utils.Size
-import dev.donmanuel.meet.newsapp.utils.Type
+import dev.donmanuel.newsapp.data.database.NewsDatabase
 import java.awt.Toolkit
 import java.awt.datatransfer.StringSelection
 import java.io.File

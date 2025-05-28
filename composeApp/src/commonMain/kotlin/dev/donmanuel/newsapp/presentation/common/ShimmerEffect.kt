@@ -16,7 +16,6 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.TileMode
 import dev.donmanuel.newsapp.theme.*
 
-
 @Composable
 fun ShimmerEffect() {
     val transition = rememberInfiniteTransition()
@@ -38,6 +37,7 @@ fun ShimmerEffect() {
             )
         }
     }
+
     LazyVerticalStaggeredGrid(
         columns = StaggeredGridCells.Adaptive(cardMinSize),
         verticalItemSpacing = mediumPadding,
@@ -63,6 +63,7 @@ fun ArticleCardShimmerEffect(brush: Brush) {
                 .size(imageSize)
                 .background(brush, RoundedCornerShape(10))
         )
+
         Column(
             modifier = Modifier.weight(1f),
             verticalArrangement = Arrangement.spacedBy(xxSmallPadding)
@@ -74,12 +75,14 @@ fun ArticleCardShimmerEffect(brush: Brush) {
                     .height(xxxLargePadding)
                     .background(brush, RoundedCornerShape(10))
             )
+
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(xxLargePadding)
                     .background(brush, RoundedCornerShape(10))
             )
+
             Box(
                 modifier = Modifier
                     .fillMaxWidth(0.4f)

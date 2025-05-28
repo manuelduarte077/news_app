@@ -26,7 +26,6 @@ class HeadlineViewModel(
         MutableStateFlow<Resource<List<Article>>>(Resource.Loading)
     val newsStateFlow: StateFlow<Resource<List<Article>>>
         get() = _newsStateFlow
-
     var category by mutableStateOf(categoryList[0])
 
     init {
@@ -48,8 +47,6 @@ class HeadlineViewModel(
             } catch (e: Exception) {
                 _newsStateFlow.emit(Resource.Error(e.message.toString()))
             }
-
         }
     }
-
 }

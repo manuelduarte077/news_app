@@ -15,7 +15,6 @@ import dev.donmanuel.newsapp.utils.randomUUIDStr
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-
 @Composable
 fun ArticleListScreen(
     articleList: List<Article>,
@@ -30,15 +29,16 @@ fun ArticleListScreen(
         items(articleList, key = {
             it.publishedAt + randomUUIDStr()
         }) { item ->
-            ArticleItem(article = item, onClick = {
+            ArticleItem(
+                article = item,
+                onClick = {
+                    val articleStr = Json.encodeToString(item)
+                    rootNavController.currentBackStackEntry?.savedStateHandle?.apply {
+                        set("article", articleStr)
+                    }
 
-                val articleStr = Json.encodeToString(item)
-                rootNavController.currentBackStackEntry?.savedStateHandle?.apply {
-                    set("article", articleStr)
-                }
-                rootNavController.navigate(Route.NewsDetail)
-            })
+                    rootNavController.navigate(Route.NewsDetail)
+                })
         }
     }
-
 }

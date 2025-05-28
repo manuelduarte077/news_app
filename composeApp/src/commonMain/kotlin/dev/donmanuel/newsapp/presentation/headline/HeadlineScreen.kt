@@ -35,8 +35,8 @@ fun HeadlineScreen(
 ) {
     val headlineViewModel = koinViewModel<HeadlineViewModel>()
     val originDirection = LocalLayoutDirection.current
-
     val uiState by headlineViewModel.newsStateFlow.collectAsState()
+
     Column(
         Modifier.fillMaxSize().padding(
             start = paddingValues.calculateStartPadding(originDirection),
@@ -64,7 +64,10 @@ fun HeadlineScreen(
         LazyRow(
             modifier = Modifier.fillMaxWidth(),
             contentPadding = PaddingValues(horizontal = xSmallPadding),
-            horizontalArrangement = Arrangement.spacedBy(xSmallPadding, Alignment.CenterHorizontally)
+            horizontalArrangement = Arrangement.spacedBy(
+                xSmallPadding,
+                Alignment.CenterHorizontally
+            )
         ) {
             items(categoryList, key = { it }) { category ->
                 FilterChip(

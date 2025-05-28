@@ -25,13 +25,12 @@ import org.koin.compose.viewmodel.koinViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BookmarkScreen(
-    rootNavController: NavController,
-    paddingValues: PaddingValues
+    rootNavController: NavController, paddingValues: PaddingValues
 ) {
     val bookmarkViewModel = koinViewModel<BookmarkViewModel>()
-
     val uiState by bookmarkViewModel.bookmarkNewsStateFlow.collectAsState()
     val originDirection = LocalLayoutDirection.current
+
     Column(
         modifier = Modifier.fillMaxSize().padding(
             start = paddingValues.calculateStartPadding(originDirection),
@@ -39,35 +38,37 @@ fun BookmarkScreen(
             bottom = paddingValues.calculateBottomPadding(),
         ),
     ) {
-        TopAppBar(title = {
-            Text(
-                text = stringResource(navigationItemsLists[2].title),
-                style = MaterialTheme.typography.headlineLarge,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onBackground
-            )
-        }, actions = {
-            IconButton(onClick = {
-                rootNavController.navigate(Route.SettingDetail)
-            }) {
-                Icon(
-                    imageVector = Icons.Filled.Settings,
-                    contentDescription = null,
+        TopAppBar(
+            title = {
+                Text(
+                    text = stringResource(navigationItemsLists[2].title),
+                    style = MaterialTheme.typography.headlineLarge,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onBackground
                 )
-            }
-        })
+            }, actions = {
+                IconButton(onClick = {
+                    rootNavController.navigate(Route.SettingDetail)
+                }) {
+                    Icon(
+                        imageVector = Icons.Filled.Settings,
+                        contentDescription = null,
+                    )
+                }
+            })
+
         uiState.DisplayResult(onLoading = {
             ShimmerEffect()
         }, onSuccess = { articleList ->
             if (articleList.isEmpty()) {
                 EmptyContent(
                     message = stringResource(Res.string.no_bookmarks),
-                    icon = Res.drawable.ic_browse, isOnRetryBtnVisible = false
+                    icon = Res.drawable.ic_browse,
+                    isOnRetryBtnVisible = false
                 )
             } else {
                 ArticleListScreen(
-                    articleList = articleList,
-                    rootNavController = rootNavController
+                    articleList = articleList, rootNavController = rootNavController
                 )
             }
         }, onError = {
@@ -76,5 +77,4 @@ fun BookmarkScreen(
             })
         })
     }
-
 }

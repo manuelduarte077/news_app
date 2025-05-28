@@ -43,23 +43,25 @@ fun SearchScreen(
         ),
         verticalArrangement = Arrangement.spacedBy(xSmallPadding)
     ) {
-        TopAppBar(title = {
-            Text(
-                text = stringResource(navigationItemsLists[1].title),
-                style = MaterialTheme.typography.headlineLarge,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onBackground
-            )
-        }, actions = {
-            IconButton(onClick = {
-                rootNavController.navigate(Route.SettingDetail)
-            }) {
-                Icon(
-                    imageVector = Icons.Filled.Settings,
-                    contentDescription = null,
+        TopAppBar(
+            title = {
+                Text(
+                    text = stringResource(navigationItemsLists[1].title),
+                    style = MaterialTheme.typography.headlineLarge,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onBackground
                 )
-            }
-        })
+            }, actions = {
+                IconButton(
+                    onClick = {
+                        rootNavController.navigate(Route.SettingDetail)
+                    }) {
+                    Icon(
+                        imageVector = Icons.Filled.Settings,
+                        contentDescription = null,
+                    )
+                }
+            })
         SearchBar(
             text = searchViewModel.searchQuery,
             onValueChange = { query ->

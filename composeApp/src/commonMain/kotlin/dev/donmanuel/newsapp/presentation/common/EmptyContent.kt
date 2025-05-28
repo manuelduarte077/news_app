@@ -39,6 +39,7 @@ fun EmptyContent(
             tint = if (!isSystemInDarkTheme()) LightGray else DarkGray,
             contentDescription = null
         )
+
         Text(
             modifier = Modifier.padding(smallPadding),
             text = message,
@@ -47,6 +48,7 @@ fun EmptyContent(
             textAlign = TextAlign.Center,
             color = if (!isSystemInDarkTheme()) LightGray else DarkGray,
         )
+
         if (isOnRetryBtnVisible) {
             Button(onClick = onRetryClick) {
                 Text(
