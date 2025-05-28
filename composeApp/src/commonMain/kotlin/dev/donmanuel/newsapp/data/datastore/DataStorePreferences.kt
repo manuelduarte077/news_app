@@ -10,7 +10,6 @@ import okio.Path.Companion.toPath
 
 expect fun dataStorePreferences(): DataStore<Preferences>
 
-
 object AppSettings {
     private lateinit var dataStore: DataStore<Preferences>
 

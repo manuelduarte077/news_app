@@ -8,8 +8,8 @@ import androidx.compose.ui.unit.Dp
 import dev.donmanuel.newsapp.data.model.Article
 import dev.donmanuel.newsapp.data.model.NewsResponse
 import dev.donmanuel.newsapp.data.model.Source
-import dev.donmanuel.newsapp.ui.navigation.NavigationItem
-import dev.donmanuel.newsapp.ui.navigation.Route
+import dev.donmanuel.newsapp.presentation.navigation.NavigationItem
+import dev.donmanuel.newsapp.presentation.navigation.Route
 import news_kmp_app.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.StringResource
 import kotlin.random.Random
@@ -18,19 +18,11 @@ const val BASE_URL = "https://newsapi.org/v2/"
 const val DB_Name = "myNewsDB"
 const val dataStoreFileName = "setting.preferences_pb"
 val categoryList = arrayListOf(
-    "Business",
-    "Entertainment",
-    "General",
-    "Health",
-    "Science",
-    "Sports",
-    "Technology"
+    "Business", "Entertainment", "General", "Health", "Science", "Sports", "Technology"
 )
 val navigationItemsLists = listOf(
     NavigationItem(
-        icon = Res.drawable.ic_headline,
-        title = Res.string.headlines,
-        route = Route.Headline
+        icon = Res.drawable.ic_headline, title = Res.string.headlines, route = Route.Headline
     ),
     NavigationItem(
         icon = Res.drawable.ic_search,
@@ -45,9 +37,7 @@ val navigationItemsLists = listOf(
 )
 
 enum class Theme(val title: StringResource) {
-    SYSTEM_DEFAULT(Res.string.system_default),
-    LIGHT_MODE(Res.string.light_mode),
-    DARK_MODE(Res.string.dark_mode)
+    SYSTEM_DEFAULT(Res.string.system_default), LIGHT_MODE(Res.string.light_mode), DARK_MODE(Res.string.dark_mode)
 }
 
 enum class Type {
@@ -55,8 +45,7 @@ enum class Type {
 }
 
 data class Size(
-    val width: Dp,
-    val height: Dp
+    val width: Dp, val height: Dp
 )
 
 val articles: List<Article> = listOf(
@@ -69,8 +58,7 @@ val articles: List<Article> = listOf(
         urlToImage = "https://www.marketscreener.com/images/reuters/2024-03-05T144855Z_1_LYNXNPEK240IP_RTROPTP_3_GERMANY-TESLA-FIRE.JPG",
         publishedAt = Random(100).nextInt().toString(),
         content = "What is the content?"
-    ),
-    Article(
+    ), Article(
         source = Source("dawdwa", "My news"),
         author = "The author",
         title = "This is the main news title headline. This is the main news title headline.",
@@ -79,8 +67,7 @@ val articles: List<Article> = listOf(
         urlToImage = "https://www.marketscreener.com/images/reuters/2024-03-05T144855Z_1_LYNXNPEK240IP_RTROPTP_3_GERMANY-TESLA-FIRE.JPG",
         publishedAt = Random(100).nextInt().toString(),
         content = "What is the content?"
-    ),
-    Article(
+    ), Article(
         source = Source("dwakjyk", "My news"),
         author = "The author",
         title = "This is the main news title headline. This is the main news title headline.",
@@ -89,8 +76,7 @@ val articles: List<Article> = listOf(
         urlToImage = "https://www.marketscreener.com/images/reuters/2024-03-05T144855Z_1_LYNXNPEK240IP_RTROPTP_3_GERMANY-TESLA-FIRE.JPG",
         publishedAt = Random(100).nextInt().toString(),
         content = "What is the content?"
-    ),
-    Article(
+    ), Article(
         source = Source("dwserfewa", "My news"),
         author = "The author",
         title = "This is the main news title headline. This is the main news title headline.",
@@ -102,14 +88,10 @@ val articles: List<Article> = listOf(
     )
 )
 val newsResponse = NewsResponse(
-    articles,
-    "dwe",
-    5
+    articles, "dwe", 5
 )
-val FadeIn = fadeIn(animationSpec = tween(220, delayMillis = 90)) +
-        scaleIn(
-            initialScale = 0.92f,
-            animationSpec = tween(220, delayMillis = 90)
-        )
+val FadeIn = fadeIn(animationSpec = tween(220, delayMillis = 90)) + scaleIn(
+    initialScale = 0.92f, animationSpec = tween(220, delayMillis = 90)
+)
 
 val FadeOut = fadeOut(animationSpec = tween(90))
