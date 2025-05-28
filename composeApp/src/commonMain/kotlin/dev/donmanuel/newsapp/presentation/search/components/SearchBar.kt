@@ -11,6 +11,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
+import dev.donmanuel.newsapp.theme.getFontFamily
+import dev.donmanuel.newsapp.theme.getFontFamilyMedium
 import dev.donmanuel.newsapp.theme.mediumPadding
 import news_kmp_app.composeapp.generated.resources.Res
 import news_kmp_app.composeapp.generated.resources.ic_search
@@ -33,7 +35,8 @@ fun SearchBar(
         value = text,
         onValueChange = { onValueChange(it) },
         textStyle = MaterialTheme.typography.bodyLarge.copy(
-            fontWeight = FontWeight.SemiBold
+            fontWeight = FontWeight.SemiBold,
+            fontFamily = getFontFamilyMedium()
         ),
         leadingIcon = {
             Icon(
@@ -46,6 +49,7 @@ fun SearchBar(
                 text = stringResource(Res.string.search),
                 style = MaterialTheme.typography.bodyLarge,
                 fontWeight = FontWeight.SemiBold,
+                fontFamily = getFontFamilyMedium()
             )
         },
         shape = MaterialTheme.shapes.medium,

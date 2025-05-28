@@ -13,6 +13,8 @@ import androidx.compose.ui.graphics.Color.Companion.DarkGray
 import androidx.compose.ui.graphics.Color.Companion.LightGray
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import dev.donmanuel.newsapp.theme.getFontFamily
+import dev.donmanuel.newsapp.theme.getFontFamilyMedium
 import dev.donmanuel.newsapp.theme.imageSize
 import dev.donmanuel.newsapp.theme.smallPadding
 import news_kmp_app.composeapp.generated.resources.Res
@@ -47,13 +49,15 @@ fun EmptyContent(
             fontWeight = FontWeight.Medium,
             textAlign = TextAlign.Center,
             color = if (!isSystemInDarkTheme()) LightGray else DarkGray,
+            fontFamily = getFontFamilyMedium()
         )
 
         if (isOnRetryBtnVisible) {
             Button(onClick = onRetryClick) {
                 Text(
                     text = stringResource(Res.string.retry),
-                    style = MaterialTheme.typography.titleMedium
+                    style = MaterialTheme.typography.titleMedium,
+                    fontFamily = getFontFamilyMedium(),
                 )
             }
         }
