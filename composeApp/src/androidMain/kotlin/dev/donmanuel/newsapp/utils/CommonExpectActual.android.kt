@@ -12,12 +12,12 @@ import dev.donmanuel.newsapp.data.database.NewsDatabase
 import org.koin.mp.KoinPlatform
 import java.util.*
 
-
 actual fun shareLink(url: String) {
     val sendIntent = Intent(Intent.ACTION_SEND).apply {
         putExtra(Intent.EXTRA_TEXT, url)
         type = "text/plain"
     }
+
     val shareIntent = Intent.createChooser(sendIntent, "Share Link")
     activityProvider.invoke().startActivity(shareIntent)
 }

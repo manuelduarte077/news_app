@@ -7,11 +7,9 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
-
 class AppPreferences(
     private val dataStore: DataStore<Preferences>
 ) {
-
     private val themeKey = stringPreferencesKey("de/donmanuel/newsapp/theme")
 
     suspend fun getTheme() = dataStore.data.map { preferences ->
@@ -21,5 +19,4 @@ class AppPreferences(
     suspend fun changeThemeMode(value: String) = dataStore.edit { preferences ->
         preferences[themeKey] = value
     }
-
 }
