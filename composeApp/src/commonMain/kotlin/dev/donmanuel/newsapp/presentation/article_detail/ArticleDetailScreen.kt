@@ -36,6 +36,7 @@ fun ArticleDetailScreen(
         articleDetailViewModel.isArticleBookmark(currentArticle)
     }
     val url = LocalUriHandler.current
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -99,7 +100,8 @@ fun ArticleDetailScreen(
         ) {
             item {
                 Box(
-                    modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(10)),
+                    modifier = Modifier.fillMaxWidth()
+                        .clip(RoundedCornerShape(10)),
                     contentAlignment = Alignment.Center
                 ) {
                     AsyncImageLoader(
