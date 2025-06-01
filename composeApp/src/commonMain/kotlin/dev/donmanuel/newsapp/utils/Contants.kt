@@ -5,14 +5,10 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
 import androidx.compose.ui.unit.Dp
-import dev.donmanuel.newsapp.data.model.Article
-import dev.donmanuel.newsapp.data.model.NewsResponse
-import dev.donmanuel.newsapp.data.model.Source
 import dev.donmanuel.newsapp.presentation.navigation.NavigationItem
 import dev.donmanuel.newsapp.presentation.navigation.Route
 import news_kmp_app.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.StringResource
-import kotlin.random.Random
 
 const val BASE_URL = "https://newsapi.org/v2/"
 const val DB_Name = "myNewsDB"
@@ -48,48 +44,7 @@ data class Size(
     val width: Dp, val height: Dp
 )
 
-val articles: List<Article> = listOf(
-    Article(
-        source = Source("dwa", "My news"),
-        author = "The author",
-        title = "This is the main news title headline. This is the main news title headline.",
-        description = "This is the main news description. This is the main news description. This is the main news description",
-        url = "",
-        urlToImage = "https://www.marketscreener.com/images/reuters/2024-03-05T144855Z_1_LYNXNPEK240IP_RTROPTP_3_GERMANY-TESLA-FIRE.JPG",
-        publishedAt = Random(100).nextInt().toString(),
-        content = "What is the content?"
-    ), Article(
-        source = Source("dawdwa", "My news"),
-        author = "The author",
-        title = "This is the main news title headline. This is the main news title headline.",
-        description = "This is the main news description. This is the main news description. This is the main news description",
-        url = "",
-        urlToImage = "https://www.marketscreener.com/images/reuters/2024-03-05T144855Z_1_LYNXNPEK240IP_RTROPTP_3_GERMANY-TESLA-FIRE.JPG",
-        publishedAt = Random(100).nextInt().toString(),
-        content = "What is the content?"
-    ), Article(
-        source = Source("dwakjyk", "My news"),
-        author = "The author",
-        title = "This is the main news title headline. This is the main news title headline.",
-        description = "This is the main news description. This is the main news description. This is the main news description",
-        url = "",
-        urlToImage = "https://www.marketscreener.com/images/reuters/2024-03-05T144855Z_1_LYNXNPEK240IP_RTROPTP_3_GERMANY-TESLA-FIRE.JPG",
-        publishedAt = Random(100).nextInt().toString(),
-        content = "What is the content?"
-    ), Article(
-        source = Source("dwserfewa", "My news"),
-        author = "The author",
-        title = "This is the main news title headline. This is the main news title headline.",
-        description = "This is the main news description. This is the main news description. This is the main news description",
-        url = "",
-        urlToImage = "https://www.marketscreener.com/images/reuters/2024-03-05T144855Z_1_LYNXNPEK240IP_RTROPTP_3_GERMANY-TESLA-FIRE.JPG",
-        publishedAt = Random(100).nextInt().toString(),
-        content = "What is the content?"
-    )
-)
-val newsResponse = NewsResponse(
-    articles, "dwe", 5
-)
+
 val FadeIn = fadeIn(animationSpec = tween(220, delayMillis = 90)) + scaleIn(
     initialScale = 0.92f, animationSpec = tween(220, delayMillis = 90)
 )

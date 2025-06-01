@@ -23,7 +23,7 @@ private val LightColorScheme = lightColorScheme(
 fun NewsAppTheme(
     appTheme: String?,
     darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     val colorScheme = when (appTheme) {
         Theme.LIGHT_MODE.name -> {

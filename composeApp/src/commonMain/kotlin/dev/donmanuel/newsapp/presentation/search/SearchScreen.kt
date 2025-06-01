@@ -17,6 +17,7 @@ import dev.donmanuel.newsapp.presentation.common.EmptyContent
 import dev.donmanuel.newsapp.presentation.common.ShimmerEffect
 import dev.donmanuel.newsapp.presentation.navigation.Route
 import dev.donmanuel.newsapp.presentation.search.components.SearchBar
+import dev.donmanuel.newsapp.theme.getFontFamily
 import dev.donmanuel.newsapp.utils.navigationItemsLists
 import news_kmp_app.composeapp.generated.resources.Res
 import news_kmp_app.composeapp.generated.resources.ic_browse
@@ -36,11 +37,13 @@ fun SearchScreen(
     val originDirection = LocalLayoutDirection.current
 
     Column(
-        modifier = Modifier.fillMaxSize().padding(
-            start = paddingValues.calculateStartPadding(originDirection),
-            end = paddingValues.calculateEndPadding(originDirection),
-            bottom = paddingValues.calculateBottomPadding()
-        ),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(
+                start = paddingValues.calculateStartPadding(originDirection),
+                end = paddingValues.calculateEndPadding(originDirection),
+                bottom = paddingValues.calculateBottomPadding()
+            ),
         verticalArrangement = Arrangement.spacedBy(xSmallPadding)
     ) {
         TopAppBar(
@@ -49,9 +52,11 @@ fun SearchScreen(
                     text = stringResource(navigationItemsLists[1].title),
                     style = MaterialTheme.typography.headlineLarge,
                     fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onBackground
+                    color = MaterialTheme.colorScheme.onBackground,
+                    fontFamily = getFontFamily()
                 )
-            }, actions = {
+            },
+            actions = {
                 IconButton(
                     onClick = {
                         rootNavController.navigate(Route.SettingDetail)
@@ -61,7 +66,9 @@ fun SearchScreen(
                         contentDescription = null,
                     )
                 }
-            })
+            }
+        )
+
         SearchBar(
             text = searchViewModel.searchQuery,
             onValueChange = { query ->
@@ -78,7 +85,7 @@ fun SearchScreen(
                 EmptyContent(
                     message = stringResource(Res.string.type_to_search),
                     icon = Res.drawable.ic_browse,
-                    isOnRetryBtnVisible = false
+                    isOnRetryBtnVisible = false,
                 )
             },
             onLoading = {

@@ -80,7 +80,8 @@ fun MainScreen(settingViewModel: SettingViewModel) {
 
                 restoreState = true
             }
-        })
+        }
+    )
 }
 
 @Composable
@@ -117,11 +118,9 @@ fun MainScaffold(
                 AnimatedVisibility(
                     visible = isBottomBarVisible,
                     enter = slideInVertically(
-                        // Slide in from the bottom
                         initialOffsetY = { fullHeight -> fullHeight }
                     ),
                     exit = slideOutVertically(
-                        // Slide out to the bottom
                         targetOffsetY = { fullHeight -> fullHeight }
                     )
                 ) {

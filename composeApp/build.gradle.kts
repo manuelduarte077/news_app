@@ -154,13 +154,16 @@ android {
     buildFeatures {
         compose = true
     }
+
     dependencies {
         debugImplementation(compose.uiTooling)
     }
 }
+
 room {
     schemaDirectory("$projectDir/schemas")
 }
+
 compose.desktop {
     application {
         mainClass = "dev.donmanuel.newsapp.MainKt"
@@ -171,6 +174,7 @@ compose.desktop {
         }
     }
 }
+
 buildkonfig {
     packageName = "dev.donmanuel.newsapp"
 

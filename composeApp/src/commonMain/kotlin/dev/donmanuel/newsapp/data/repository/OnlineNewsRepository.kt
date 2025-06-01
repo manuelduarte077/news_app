@@ -8,15 +8,12 @@ import io.ktor.client.statement.*
 class OnlineNewsRepository(
     private val networkModule: HttpClient
 ) {
-
     suspend fun getNews(category: String): HttpResponse {
-
         return networkModule.get {
             url("everything")
             parameter("q", category)
             parameter("apiKey", API_KEY)
         }
-
     }
 
     suspend fun searchNews(searchQuery: String): HttpResponse {

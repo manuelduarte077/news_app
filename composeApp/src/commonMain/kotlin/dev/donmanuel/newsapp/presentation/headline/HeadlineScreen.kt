@@ -19,6 +19,8 @@ import dev.donmanuel.newsapp.presentation.common.ArticleListScreen
 import dev.donmanuel.newsapp.presentation.common.EmptyContent
 import dev.donmanuel.newsapp.presentation.common.ShimmerEffect
 import dev.donmanuel.newsapp.presentation.navigation.Route
+import dev.donmanuel.newsapp.theme.getFontFamily
+import dev.donmanuel.newsapp.theme.getFontFamilyMedium
 import dev.donmanuel.newsapp.utils.categoryList
 import dev.donmanuel.newsapp.utils.navigationItemsLists
 import news_kmp_app.composeapp.generated.resources.Res
@@ -44,23 +46,29 @@ fun HeadlineScreen(
             bottom = paddingValues.calculateBottomPadding(),
         )
     ) {
-        TopAppBar(title = {
-            Text(
-                text = stringResource(navigationItemsLists[0].title),
-                style = MaterialTheme.typography.headlineLarge,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onBackground
-            )
-        }, actions = {
-            IconButton(onClick = {
-                rootNavController.navigate(Route.SettingDetail)
-            }) {
-                Icon(
-                    imageVector = Icons.Filled.Settings,
-                    contentDescription = null,
+        MediumTopAppBar(
+            title = {
+                Text(
+                    text = stringResource(navigationItemsLists[0].title),
+                    style = MaterialTheme.typography.headlineLarge,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    fontFamily = getFontFamily()
                 )
+            },
+            actions = {
+                IconButton(
+                    onClick = {
+                        rootNavController.navigate(Route.SettingDetail)
+                    }) {
+                    Icon(
+                        imageVector = Icons.Filled.Settings,
+                        contentDescription = null,
+                    )
+                }
             }
-        })
+        )
+
         LazyRow(
             modifier = Modifier.fillMaxWidth(),
             contentPadding = PaddingValues(horizontal = xSmallPadding),
@@ -76,7 +84,7 @@ fun HeadlineScreen(
                         headlineViewModel.category = category
                         headlineViewModel.getHeadlines(headlineViewModel.category)
                     }, label = {
-                        Text(category)
+                        Text(category, fontFamily = getFontFamilyMedium())
                     },
                     colors = FilterChipDefaults.filterChipColors(
                         containerColor = MaterialTheme.colorScheme.surfaceContainer
